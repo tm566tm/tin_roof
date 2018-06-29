@@ -1,0 +1,42 @@
+
+I included what has been tested. I'll test and fix the bugs of the other requirements (not included in this package) when I have more time to night. Thanks.
+
+1) Postman test content
+
+URLs:
+GET (all)
+http://localhost:8080/calendarevents/
+POST
+http://localhost:8080/calendarevents/
+PUT
+http://localhost:8080/calendarevents/1
+DELETE
+http://localhost:8080/calendarevents/1
+
+
+JSON to use:
+{
+    "id": 2,
+    "calendarId": 2,
+    "calendar": {
+        "name": "n2",
+        "organizer": "o2"
+    },
+    "title": "t2",
+    "location": "t23333",
+    "attendeeList": "list",
+    "reminderHasBeenSent": false,
+    "reminderTime": "2018-06-29T07:21:20.893",
+    "eventDateAndTime": "2018-06-29T07:21:20.892"
+}
+
+
+2) During server start up, the exception below is thrown be cause the version of Derby database packaged with Spring boot doesn't have a schema with the name 'SA'. This is a quick fix when connected to an external database with the statement 'CREATE SCHEMA SA;'. The embedded Derby copy doen'st seem to be able to pick this up via the schema.sql file I added. 
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) [hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+
+Caused by: org.apache.derby.iapi.error.StandardException: Schema 'SA' does not exist
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.14.1.0.jar:na]
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.14.1.0.jar:na]

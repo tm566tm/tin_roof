@@ -1,0 +1,14 @@
+During server start up, the message below is shown on the console because the version of Derby database packaged with Spring boot doesn't have a schema with the name 'SA'. 
+This is a quick fix when connected to an external database with the statement 'CREATE SCHEMA SA;'. 
+The embedded Derby copy doen'st seem to be able to pick this up via the schema.sql file I added but all transactions to and from the database will work regardless of this.
+* Each time the app is restarted, the database is cleaned out.
+ 
+
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) [hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+
+Caused by: org.apache.derby.iapi.error.StandardException: Schema 'SA' does not exist
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.14.1.0.jar:na]
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source) ~[derby-10.14.1.0.jar:na]

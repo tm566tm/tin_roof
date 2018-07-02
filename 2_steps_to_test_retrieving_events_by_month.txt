@@ -1,0 +1,66 @@
+1) After started the app, in Postman, do the posts with the JSONs provided below. 
+
+POST URL: 
+http://localhost:8080/calendarevents/
+
+
+JSON to use (please do 1 post at a time):
+First one,
+	{
+		"title":"Meeting 1",
+		"location":"room 1",
+		"attendeeList":"Bob V., Lisa S., Tim J.",
+		"reminderHasBeenSent":false,
+		"reminderTime":"2018-06-29T07:21:20.893",
+		"eventDateAndTime":"2018-06-29T07:21:20.892",
+		"calendar": 
+        {
+            "name": "Huey M.",
+            "userName": "hm2"
+        }
+	
+	}
+
+
+Second one,
+	{
+		"title":"Meeting 2",
+		"location":"room 2",
+		"attendeeList":"Jim V., Linda S., Vict J.",
+		"reminderHasBeenSent":false,
+		"reminderTime":"2018-07-30T07:21:20.893",
+		"eventDateAndTime":"2018-07-30T07:21:20.892",
+		"calendar": 
+        {
+            "name": "Huey M.",
+            "userName": "hm2"
+        }
+	
+	}
+
+
+Third one,
+	{
+		"title":"Meeting 3",
+		"location":"room 3",
+		"attendeeList":"Jenn V., Kim S., Tom J.",
+		"reminderHasBeenSent":false,
+		"reminderTime":"2018-06-30T07:21:20.893",
+		"eventDateAndTime":"2018-06-30T07:21:20.892",
+		"calendar": 
+        {
+            "name": "Tom J.",
+            "userName": "tm3"
+        }
+	
+	}
+
+
+2) After the posts, use the URL below in Postman to do a GET call to the API to display the events of the month of June. 
+
+GET URL: 
+http://localhost:8080/calendareventsbymonth/june
+
+
+3) To save time, I skipped retrieving by week and day since they're of similar concepts as retrieving by month.
+
